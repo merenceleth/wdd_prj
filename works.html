@@ -10,6 +10,107 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* ── Works grid — self-contained so nothing can go missing ── */
+
+    .works-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 clamp(1.25rem, 5vw, 3rem) 4rem;
+    }
+
+    .works-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem 2.5rem;
+    }
+
+    /* Single column on mobile */
+    @media (max-width: 680px) {
+      .works-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+    }
+
+    .project-card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Image container — fixed aspect ratio so all cards line up */
+    .card-img-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+      background: #f2f2f2;
+      aspect-ratio: 4 / 3;
+    }
+
+    .card-img-wrap img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .project-card:hover .card-img-wrap img {
+      transform: scale(1.04);
+    }
+
+    /* Subtle dark overlay on hover */
+    .card-img-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0);
+      transition: background 0.4s ease;
+      pointer-events: none;
+    }
+
+    .project-card:hover .card-img-wrap::after {
+      background: rgba(0, 0, 0, 0.07);
+    }
+
+    /* Text below image */
+    .card-body {
+      padding-top: 0.85rem;
+    }
+
+    .card-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      margin: 0 0 0.25rem;
+      color: #1a1a1a;
+    }
+
+    .card-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #888;
+      margin: 0;
+    }
+
+    /* ── Page heading ──────────────────────────────────── */
+    .works-heading {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 300;
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 3rem 0 2.5rem;
+      color: #1a1a1a;
+    }
+  </style>
 </head>
 <body id="works">
 
@@ -31,73 +132,88 @@
     </div>
   </nav>
 
-  <div class="container">
+  <!-- ── PAGE TITLE ──────────────────────────────────────── -->
+  <h1 class="works-heading">Works</h1>
 
-    <h1 class="page-title">Works</h1>
-
-    <!-- ── WORKS GRID ───────────────────────────────────────── -->
+  <!-- ── WORKS GRID ──────────────────────────────────────── -->
+  <div class="works-wrap">
     <div class="works-grid">
 
       <a href="personallogo.html" class="project-card">
-        <div class="project-card-img">
-          <img class="project-img" src="images/personal_logo.png" alt="Personal logo project" loading="lazy" />
+        <div class="card-img-wrap">
+          <img src="images/personal_logo.png" alt="Personal logo" loading="lazy" />
         </div>
-        <p class="project-name uppercase">Personal logo</p>
-        <p class="project-desc uppercase">Personal project</p>
+        <div class="card-body">
+          <p class="card-title">Personal logo</p>
+          <p class="card-desc">Personal project</p>
+        </div>
       </a>
 
       <a href="flower-girl.html" class="project-card">
-        <div class="project-card-img">
-          <img class="project-img" src="images/flower_girl.png" alt="Digital collage of a girl and flowers" loading="lazy" />
+        <div class="card-img-wrap">
+          <img src="images/flower_girl.png" alt="Digital collage of a girl and flowers" loading="lazy" />
         </div>
-        <p class="project-name uppercase">"Flower girl"</p>
-        <p class="project-desc uppercase">Digital collage</p>
+        <div class="card-body">
+          <p class="card-title">"Flower girl"</p>
+          <p class="card-desc">Digital collage</p>
+        </div>
       </a>
 
       <a href="itsoktonotbeok.html" class="project-card">
-        <div class="project-card-img">
-          <img class="project-img" src="images/cushion_a.png" alt="Cushion design — It's OK to not be OK" loading="lazy" />
+        <div class="card-img-wrap">
+          <img src="images/cushion_a.png" alt="Cushion — It's OK to not be OK" loading="lazy" />
         </div>
-        <p class="project-name uppercase">"It's OK to not be OK"</p>
-        <p class="project-desc uppercase">Cushion design</p>
+        <div class="card-body">
+          <p class="card-title">"It's OK to not be OK"</p>
+          <p class="card-desc">Cushion design</p>
+        </div>
       </a>
 
       <a href="makeyourselfapriority.html" class="project-card">
-        <div class="project-card-img">
-          <img class="project-img" src="images/cushion_b.png" alt="Cushion design — Make Yourself a Priority" loading="lazy" />
+        <div class="card-img-wrap">
+          <img src="images/cushion_b.png" alt="Cushion — Make Yourself a Priority" loading="lazy" />
         </div>
-        <p class="project-name uppercase">"Make Yourself a Priority"</p>
-        <p class="project-desc uppercase">Cushion design</p>
+        <div class="card-body">
+          <p class="card-title">"Make Yourself a Priority"</p>
+          <p class="card-desc">Cushion design</p>
+        </div>
       </a>
 
       <a href="gotyourback.html" class="project-card">
-        <div class="project-card-img">
-          <img class="project-img" src="images/cushion_c.png" alt="Cushion design — We've Got Your Back" loading="lazy" />
+        <div class="card-img-wrap">
+          <img src="images/cushion_c.png" alt="Cushion — We've Got Your Back" loading="lazy" />
         </div>
-        <p class="project-name uppercase">"We've Got Your Back"</p>
-        <p class="project-desc uppercase">Cushion design</p>
+        <div class="card-body">
+          <p class="card-title">"We've Got Your Back"</p>
+          <p class="card-desc">Cushion design</p>
+        </div>
       </a>
 
       <a href="fatcatcafe.html" class="project-card">
-        <div class="project-card-img">
-          <img class="project-img" src="images/fat_cat_cafe.png" alt="Fat Cat Cafe — desktop application" loading="lazy" />
+        <div class="card-img-wrap">
+          <img src="images/fat_cat_cafe.png" alt="Fat Cat Cafe desktop application" loading="lazy" />
         </div>
-        <p class="project-name uppercase">Fat Cat Cafe</p>
-        <p class="project-desc uppercase">Desktop application (Windows)</p>
+        <div class="card-body">
+          <p class="card-title">Fat Cat Cafe</p>
+          <p class="card-desc">Desktop application (Windows)</p>
+        </div>
       </a>
 
-    </div>
+    </div><!-- /.works-grid -->
 
-    <!-- ── CTA ──────────────────────────────────────────────── -->
+    <!-- ── CTA ────────────────────────────────────────────── -->
     <div class="works-cta">
-      <h2 class="call-to-action">Let's work together.</h2>
-      <p class="cta-text">I'm currently open to freelance work opportunities.<br />If you're interested in working together, send me an email.</p>
-      <div class="p-button-margin">
+      <h2 class="centered call-to-action">Let's work together.</h2>
+      <p class="centered cta-text">
+        I'm currently open to freelance work opportunities.<br />
+        If you're interested in working together, send me an email.
+      </p>
+      <div class="centered p-button-margin">
         <a class="purple-button button-effect" href="mailto:tianlexi@gmail.com">Get in touch</a>
       </div>
     </div>
 
-    <!-- ── FOOTER ───────────────────────────────────────────── -->
+    <!-- ── FOOTER ─────────────────────────────────────────── -->
     <footer>
       <div class="site-footer">
         <img src="images/logo.png" alt="Lexi Tian logo" class="logo-size" loading="lazy" />
@@ -105,22 +221,24 @@
       </div>
     </footer>
 
-  </div><!-- /.container -->
+  </div><!-- /.works-wrap -->
 
   <script>
     const toggle = document.querySelector('.nav-toggle');
     const links  = document.getElementById('nav-links');
-    toggle.addEventListener('click', () => {
-      const open = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!open));
-      links.classList.toggle('is-open', !open);
-    });
-    links.querySelectorAll('a').forEach(a =>
-      a.addEventListener('click', () => {
-        toggle.setAttribute('aria-expanded', 'false');
-        links.classList.remove('is-open');
-      })
-    );
+    if (toggle && links) {
+      toggle.addEventListener('click', () => {
+        const open = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!open));
+        links.classList.toggle('is-open', !open);
+      });
+      links.querySelectorAll('a').forEach(a =>
+        a.addEventListener('click', () => {
+          toggle.setAttribute('aria-expanded', 'false');
+          links.classList.remove('is-open');
+        })
+      );
+    }
   </script>
 
 </body>
